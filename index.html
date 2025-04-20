@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Link</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        .profile-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            padding: 20px;
+            margin: 20px auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .profile-card img {
+            border-radius: 50%;
+            border: 4px solid #ff007b;
+            width: 100px;
+            height: 100px;
+        }
+        .profile-card h2 {
+            margin: 10px 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .profile-card p {
+            color: #777;
+            margin: 5px 0;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 24px;
+        }
+        .social-icons a:hover {
+            color: #ff007b;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .tabs a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .tabs a:hover {
+            background-color: #eee;
+        }
+        audio {
+            display: none;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .timeline {
+            text-align: left;
+            padding: 20px;
+        }
+        .timeline ul {
+            padding: 0;
+            list-style: none;
+            position: relative;
+        }
+        .timeline ul::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ddd;
+            z-index: -1;
+        }
+        .timeline ul li {
+            margin-bottom: 20px;
+            padding-left: 60px;
+            position: relative;
+        }
+        .timeline ul li::before {
+            content: attr(data-year);
+            position: absolute;
+            left: -40px;
+            top: 0;
+            font-weight: bold;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .timeline ul li::after {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border: 2px solid #ff007b;
+            border-radius: 50%;
+        }
+        .time-container {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="https://telegra.ph/file/a1c282b7cb8a14e213bc7.mp4" type="video/mp4"> <!-- Ganti dengan URL atau path video Anda -->
+        Your browser does not support the video tag.
+    </video>
+    <audio autoplay loop>
+        <source src="https://files.catbox.moe/4fk13r.aac" type="audio/mp3"> <!-- Ganti dengan URL atau path audio Anda -->
+        Your browser does not support the audio tag.
+    </audio>
+    <div class="profile-card">
+        <img src="https://files.catbox.moe/flxp3h.jpg" alt="Profile Picture"> <!-- Ganti dengan gambar profil Anda -->
+        <h2>Hydra</h2>
+        <p>APATUH KIRA-KIRA</p>
+        <div class="time-container" id="time-container"></div>
+        <div class="tab-content active" id="home">
+            <p>Hydra — 4-10-2024</p>
+            <p>"Hanya Seorang Manusia Biasa Yang Menginginkan Kehangatan Tulus Dari Seseorang :)"</p>
+            <p>– Aslinya Mah Ngwawor.</p>
+            <div class="social-icons">
+                <a href="https://wa.me/nomor" target="_blank"><i class="fab fa-whatsapp"></i></a> <!-- Ganti dengan link WhatsApp Anda -->
+                <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a> <!-- Ganti dengan link Instagram Anda -->
+                <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a> <!-- Ganti dengan link GitHub Anda -->
+            </div>
+        </div>
+        <div class="tab-content" id="progress">
+            <div class="timeline">
+                <ul>
+                    <li data-year="2022">Menemukan Hoby Baru<br>Terobsesi dengan Elaina bjir</li>
+                    <li data-year="2022">Sedikit Mempelajari Pemrograman<br>Terkendala oleh device</li>
+                    <li data-year="2023">Mencoba Membuat WhatsApp Bot<br>Belajar dari youtube</li>
+                    <li data-year="2023">Mendalami Dunia Programing<br>Membuat WhatsApp bot dan projects web kecil</li>
+                    <li data-year="2024">Menjalankan Website Streaming Anime<br>Mengisi kegabutan dan ingin</li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content" id="contact">
+            <p>Kontak: Hydra@example.com</p> <!-- Ganti dengan informasi kontak Anda -->
+        </div>
+        <div class="tabs">
+            <a href="#home" onclick="showTab('home')">HOME</a>
+            <a href="#progress" onclick="showTab('progress')">PROGRESS</a>
+            <a href="#contact" onclick="showTab('contact')">CONTACT</a>
+        </div>
+    </div>
+    <script>
+        function showTab(tabId) {
+            var tabs = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function updateTime() {
+            var timeContainer = document.getElementById('time-container');
+            var now = new Date();
+            var options = {
+                timeZone: 'Asia/Jakarta',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            var formatter = new Intl.DateTimeFormat('id-ID', options);
+            timeContainer.innerHTML = formatter.format(now);
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
