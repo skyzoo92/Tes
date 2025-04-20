@@ -1,78 +1,76 @@
-// Salju otomatis
-const snowflakesContainer = document.querySelector('.snowflakes');
 
-for (let i = 0; i < 50; i++) {
-  const snowflake = document.createElement('span');
-  const size = Math.random() * 5 + 5;
-  const left = Math.random() * 100;
-  const delay = Math.random() * 10;
-  const duration = Math.random() * 10 + 5;
-
-  snowflake.style.width = `${size}px`;
-  snowflake.style.height = `${size}px`;
-  snowflake.style.left = `${left}%`;
-  snowflake.style.animationDelay = `${delay}s`;
-  snowflake.style.animationDuration = `${duration}s`;
-
-  snowflakesContainer.appendChild(snowflake);
-}
-
-// Sidebar toggle
 function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('active');
-  document.getElementById('hamburger').classList.toggle('open');
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("active");
 }
 
-// Mode gelap/terang toggle
 function toggleMode() {
-  document.body.classList.toggle('dark-mode');
+  document.body.classList.toggle("dark-mode");
+  const icon = document.getElementById("mode-icon");
+  if (document.body.classList.contains("dark-mode")) {
+    icon.src = "https://cdn-icons-png.flaticon.com/512/5268/5268535.png";
+  } else {
+    icon.src = "https://cdn-icons-png.flaticon.com/512/4814/4814730.png";
+  }
 }
 
-// Musik background
-let isPlaying = true;
-const bgMusic = document.getElementById('bg-music');
-const musicBtn = document.getElementById('music-btn');
-const musicIcon = document.getElementById('music-icon');
+function navigateTo(event, sectionId) {
+  event.preventDefault();
+  document.querySelectorAll("main.content section").forEach((section) => {
+    section.classList.remove("active");
+  });
+  document.getElementById(sectionId).classList.add("active");
+}
 
 function toggleMusic() {
-  if (isPlaying) {
-    bgMusic.pause();
-    musicIcon.textContent = '▶️';
-    musicBtn.textContent = 'Putar Musik';
+  const music = document.getElementById("bg-music");
+  const icon = document.getElementById("music-icon");
+  if (music.paused) {
+    music.play();
+    icon.textContent = "⏸️";
+    document.getElementById("music-btn").textContent = "Hentikan Musik";
   } else {
-    bgMusic.play();
-    musicIcon.textContent = '⏸️';
-    musicBtn.textContent = 'Hentikan Musik';
+    music.pause();
+    icon.textContent = "▶️";
+    document.getElementById("music-btn").textContent = "Putar Musik";
   }
-  isPlaying = !isPlaying;
 }
 
-// Informasi Waktu Wib
-function updateTime() {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' });
-      document.getElementById('time').textContent = 'Waktu: ' + timeString + ' WIB';
-    }
+function updateTimeAndBattery() {
+  const timeElem = document.getElementById("time");
+  const batteryElem = document.getElementById("battery-level");
 
-// Informasi Batre
-function updateBattery() {
-      if (navigator.getBattery) {
-        navigator.getBattery().then(battery => {
-          const level = Math.round(battery.level * 100);
-          document.getElementById('battery-level').textContent = 'Baterai: ' + level + '%';
-        });
-      } else {
-        document.getElementById('battery-level').textContent = 'Baterai: Tidak didukung';
-      }
-    }
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  timeElem.textContent = `Waktu: ${hours}:${minutes} WIB`;
 
-// Navigasi antar halaman
-function navigateTo(event, id) {
-  event.preventDefault();
-  document.querySelectorAll('.content section').forEach(sec => sec.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  navigator.getBattery?.().then((battery) => {
+    batteryElem.textContent = `Baterai: ${Math.round(battery.level * 100)}%`;
+  });
 }
 
-setInterval(updateTime, 1000);
-updateTime();
-updateBattery();
+setInterval(updateTimeAndBattery, 60000);
+updateTimeAndBattery();
+
+const typedText = document.getElementById("typed-text");
+const messages = ["Selamat datang di portofolio saya.", "Saya seorang web enthusiast.", "Saya suka menciptakan hal keren dengan kode."];
+let messageIndex = 0;
+let charIndex = 0;
+
+function typeText() {
+  if (charIndex < messages[messageIndex].length) {
+    typedText.textContent += messages[messageIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeText, 50);
+  } else {
+    setTimeout(() => {
+      typedText.textContent = "";
+      charIndex = 0;
+      messageIndex = (messageIndex + 1) % messages.length;
+      typeText();
+    }, 2000);
+  }
+}
+
+typeText();
