@@ -85,53 +85,6 @@ function typeText() {
 }
 typeText();
 
-// Musik kontrol
-let isPlaying = false;
-function toggleMusic() {
-  const music = document.getElementById('bg-music');
-  const btn = document.getElementById('music-btn');
-  if (isPlaying) {
-    music.pause();
-    btn.textContent = 'Mainkan Musik';
-  } else {
-    music.play();
-    btn.textContent = 'Hentikan Musik';
-  }
-  isPlaying = !isPlaying;
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-  const music = document.getElementById('bg-music');
-  music.volume = 0.5;
-  music.play().catch(() => {
-    // Autoplay kadang diblokir, bisa diaktifkan manual oleh user
-    console.warn("Autoplay diblokir oleh browser");
-  });
-  isPlaying = true;
-  updateMusicButton();
-});
-
-function updateMusicButton() {
-  const btn = document.getElementById('music-btn');
-  const icon = document.getElementById('music-icon');
-  if (isPlaying) {
-    btn.innerHTML = '<span id="music-icon">⏸️</span> Hentikan Musik';
-  } else {
-    btn.innerHTML = '<span id="music-icon">▶️</span> Mainkan Musik';
-  }
-}
-
-function toggleMusic() {
-  const music = document.getElementById('bg-music');
-  if (isPlaying) {
-    music.pause();
-  } else {
-    music.play();
-  }
-  isPlaying = !isPlaying;
-  updateMusicButton();
-}
-
 
     setInterval(updateTime, 1000);
     updateTime();
