@@ -47,6 +47,25 @@ function toggleMusic() {
   isPlaying = !isPlaying;
 }
 
+// Informasi Waktu Wib
+function updateTime() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' });
+      document.getElementById('time').textContent = 'Waktu: ' + timeString + ' WIB';
+    }
+
+// Informasi Batre
+function updateBattery() {
+      if (navigator.getBattery) {
+        navigator.getBattery().then(battery => {
+          const level = Math.round(battery.level * 100);
+          document.getElementById('battery-level').textContent = 'Baterai: ' + level + '%';
+        });
+      } else {
+        document.getElementById('battery-level').textContent = 'Baterai: Tidak didukung';
+      }
+    }
+
 // Navigasi antar halaman
 function navigateTo(event, id) {
   event.preventDefault();
