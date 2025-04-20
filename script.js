@@ -84,6 +84,19 @@ function typeText() {
   }
 }
 typeText();
+  
+  //Auto Play Music
+  const audio = document.getElementById('background-music');
+
+  // Untuk mengatasi batasan autoplay di browser
+  document.addEventListener('DOMContentLoaded', () => {
+    audio.play().catch(() => {
+      // Kalau gagal autoplay, tunggu interaksi user
+      document.addEventListener('click', () => {
+        audio.play();
+      }, { once: true });
+    });
+  });
 
 
     setInterval(updateTime, 1000);
