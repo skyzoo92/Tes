@@ -72,3 +72,7 @@ function navigateTo(event, id) {
   document.querySelectorAll('.content section').forEach(sec => sec.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
+
+setInterval(updateTime, 1000);
+updateTime();
+updateBattery();
