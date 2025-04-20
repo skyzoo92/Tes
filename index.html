@@ -7,9 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Salju Background -->
-  <div class="snowflakes" aria-hidden="true"></div>
-
+<!-- Salju Background -->
+<div class="snowflakes" aria-hidden="true"></div>
   <button class="sidebar-toggle" onclick="toggleSidebar()">
     <div class="hamburger" id="hamburger">
       <span></span>
@@ -22,12 +21,12 @@
     <img id="mode-icon" src="https://cdn-icons-png.flaticon.com/512/4814/4814730.png" alt="Mode Icon" width="24" />
   </button>
 
-  <div class="sidebar" id="sidebar">
-    <h2>Portofolio</h2>
-    <a href="home" onclick="navigateTo(event, 'home')">Beranda</a>
-    <a href="about" onclick="navigateTo(event, 'about')">Tentang Saya</a>
-    <a href="contact" onclick="navigateTo(event, 'contact')">Kontak</a>
-  </div>
+<div class="sidebar" id="sidebar">
+  <h2>Portofolio</h2>
+  <a href="home" onclick="navigateTo(event, 'home')">Beranda</a>
+  <a href="about" onclick="navigateTo(event, 'about')">Tentang Saya</a>
+  <a href="contact" onclick="navigateTo(event, 'contact')">Kontak</a>
+</div>
 
   <div class="status-bar">
     <span id="battery-level">Baterai: --%</span>
@@ -35,44 +34,73 @@
   </div>
 
   <main class="content">
-    <section id="home" class="active">
-      <div class="welcome">
-        <img src="https://files.catbox.moe/wh6fiv.jpg" alt="Foto Profil" class="fade-in" />
-        <h1 class="fade-in-delay">Halo, Saya Hydra</h1>
-        <p id="typed-text" class="fade-in-delay2"></p>
+<section id="home" class="active">
+  <div class="welcome">
+    <img src="https://files.catbox.moe/wh6fiv.jpg" alt="Foto Profil" class="fade-in" />
+    <h1 class="fade-in-delay">Halo, Saya Hydra</h1>
+    <p id="typed-text" class="fade-in-delay2"></p>
 
-        <div style="margin-top: 2rem;">
-          <audio id="bg-music" autoplay loop>
-            <source src="https://files.catbox.moe/mczld0.mp3" type="audio/mp3">
-            Your browser does not support the audio tag.
-          </audio>
-          <button onclick="toggleMusic()" id="music-btn" class="music-button">
-            <span id="music-icon">⏸️</span> Hentikan Musik
-          </button>
-        </div>
-      </div>
-    </section>
+    <div style="margin-top: 2rem;">
+    <audio id="bg-music" autoplay loop>
+  <source src="https://files.catbox.moe/mczld0.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio>
+<button onclick="toggleMusic()" id="music-btn" class="music-button">
+  <span id="music-icon">⏸️</span> Hentikan Musik
+</button>
+    </div>
+  </div>
+</section>
 
     <section id="about">
       <h1>Tentang Saya</h1>
-      <p>Saya adalah seorang siswa SMK berjurusan akuntansi yang bersemangat dalam dunia pengembangan web, dengan keahlian di HTML, CSS, dan JavaScript. Saya suka menciptakan sesuatu yang menarik, efisien, dan berguna.</p>
+      <p>Saya adalah seorang siswa smk berjurusan akuntansi yang bersemangat dalam dunia pengembangan web, dengan keahlian di HTML, CSS, dan JavaScript. Saya suka menciptakan sesuatu yang menarik, efisien, dan berguna.</p>
 
       <div class="about-card">
         <h2>Hobi & Ketertarikan</h2>
         <ul>
           <li>Membuat website interaktif</li>
           <li>Belajar JavaScript Bot WhatsApp</li>
-          <li>Bermain game...</li>
+          <li>Bermain game dan menonton anime</li>
         </ul>
+      </div>
+
+      <div class="about-card">
+        <h2>Kemampuan Saya</h2>
+        <div class="skill">
+          <span>HTML</span>
+          <div class="progress"><div class="bar html"></div></div>
+        </div>
+        <div class="skill">
+          <span>CSS</span>
+          <div class="progress"><div class="bar css"></div></div>
+        </div>
+        <div class="skill">
+          <span>JavaScript</span>
+          <div class="progress"><div class="bar js"></div></div>
+        </div>
       </div>
     </section>
 
-    <section id="contact">
-      <h1>Kontak</h1>
-      <a href="https://wa.me/6281234567890" class="contact-btn" target="_blank">
-        Hubungi Saya di WhatsApp
-      </a>
-    </section>
+<section id="contact">
+  <h1>Hubungi Saya</h1>
+  <p>Jangan ragu untuk menghubungi saya melalui platform berikut:</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
+    <a href="https://wa.me/6285173228399" target="_blank" class="contact-btn" style="--icon: url('https://cdn-icons-png.flaticon.com/512/733/733585.png')">
+      WhatsApp
+    </a>
+    <a href="mailto:skyzoo604@email.com" class="contact-btn" style="--icon: url('https://cdn-icons-png.flaticon.com/512/732/732200.png')">
+      Email
+    </a>
+    <a href="https://instagram.com/boyxiaoo" target="_blank" class="contact-btn" style="--icon: url('https://cdn-icons-png.flaticon.com/512/2111/2111463.png')">
+      Instagram
+    </a>
+    <a href="https://t.me/draa82" target="_blank" class="contact-btn" style="--icon: url('https://cdn-icons-png.flaticon.com/512/2111/2111646.png')">
+      Telegram
+    </a>
+  </div>
+</section>
   </main>
 
   <script src="script.js"></script>
