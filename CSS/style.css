@@ -254,7 +254,7 @@
     .bar.css { width: 10%; }
     .bar.js { width: 90%; }
   
-    .audio {
+    audio {
             display: none;
         }
 
