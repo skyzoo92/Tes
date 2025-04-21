@@ -50,23 +50,41 @@ window.addEventListener('popstate', () => {
   const path = window.location.pathname.split('/').pop() || 'home';
   showSection(path);
 });
-
+    //Info Jam WIB
     function updateTime() {
       const now = new Date();
       const timeString = now.toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' });
       document.getElementById('time').textContent = 'Waktu: ' + timeString + ' WIB';
     }
 
-    function updateBattery() {
-      if (navigator.getBattery) {
-        navigator.getBattery().then(battery => {
-          const level = Math.round(battery.level * 100);
-          document.getElementById('battery-level').textContent = 'Baterai: ' + level + '%';
+  // Info Batre
+  function updateBatteryDisplay(battery) {
+    const level = Math.round(battery.level * 100);
+    document.getElementById('battery-level').textContent = 'Baterai: ' + level + '%';
+  }
+
+  function updateBattery() {
+    if (navigator.getBattery) {
+      navigator.getBattery().then(battery => {
+        // Set level pertama kali
+        updateBatteryDisplay(battery);
+
+        // Perbarui level saat berubah
+        battery.addEventListener('levelchange', () => {
+          updateBatteryDisplay(battery);
         });
-      } else {
-        document.getElementById('battery-level').textContent = 'Baterai: Tidak didukung';
-      }
+
+        // Juga bisa tambah listener untuk charging, jika ingin
+        battery.addEventListener('chargingchange', () => {
+          console.log('Charging: ' + battery.charging);
+        });
+      });
+    } else {
+      document.getElementById('battery-level').textContent = 'Baterai: Tidak didukung';
     }
+  }
+
+  window.onload = updateBattery;
 
     if (localStorage.getItem('mode') === 'dark') {
       document.body.classList.add('dark-mode');
